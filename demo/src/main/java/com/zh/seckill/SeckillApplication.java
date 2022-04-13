@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description:说明
  */
 @SpringBootApplication
-@MapperScan("com.zh.seckill.pojo")
+@MapperScan("com.zh.seckill.mapper")
 public class SeckillApplication {
     public static void main(String[] args) {
         System.out.println(SpringBootVersion.getVersion());

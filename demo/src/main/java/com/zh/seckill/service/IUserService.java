@@ -1,7 +1,9 @@
-package com.zh.generator.service;
+package com.zh.seckill.service;
 
-import com.zh.generator.pojo.User;
+import com.zh.seckill.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zh.seckill.vo.LoginVo;
+import com.zh.seckill.vo.RespBean;
 
 /**
  * <p>
@@ -13,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
+
+   RespBean doLogin(LoginVo loginVo);
 }

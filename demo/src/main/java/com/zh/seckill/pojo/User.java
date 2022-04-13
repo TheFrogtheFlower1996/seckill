@@ -1,4 +1,4 @@
-package com.zh.generator.pojo;
+package com.zh.seckill.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.util.Date;

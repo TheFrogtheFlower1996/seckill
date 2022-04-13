@@ -1,6 +1,6 @@
-package com.zh.generator.mapper;
+package com.zh.seckill.mapper;
 
-import com.zh.generator.pojo.User;
+import com.zh.seckill.pojo.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

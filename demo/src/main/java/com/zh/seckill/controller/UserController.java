@@ -1,4 +1,4 @@
-package com.zh.generator.controller;
+package com.zh.seckill.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
