@@ -6,7 +6,9 @@ import com.zh.seckill.pojo.User;
 import com.zh.seckill.mapper.UserMapper;
 import com.zh.seckill.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.zh.seckill.utils.CookieUtil;
 import com.zh.seckill.utils.MD5Utils;
+import com.zh.seckill.utils.UUIDUtil;
 import com.zh.seckill.utils.ValidatorUtil;
 import com.zh.seckill.vo.LoginVo;
 import com.zh.seckill.vo.RespBean;
@@ -16,6 +18,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 /**
  * <p>
@@ -36,7 +42,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * 登录
      * */
     @Override
-    public RespBean doLogin(LoginVo loginVo) {
+    public RespBean doLogin(LoginVo loginVo,HttpServletRequest request, HttpServletResponse response) {
 
         String mobile = loginVo.getMobile();
         String password = loginVo.getPassword();
@@ -46,6 +52,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        if (StringUtils.isEmpty(mobile ) || StringUtils.isEmpty(password)){
 //            return RespBean.error(RespBeanEnum.LOGIN_ERROR);
 //        }
+
 //        if (!ValidatorUtil.isMobile(mobile)){
 //            return RespBean.error(RespBeanEnum.MOBILE_ERROR);
 //        }
@@ -61,6 +68,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //            return RespBean.error(RespBeanEnum.LOGIN_ERROR);
             throw new GlobalException(RespBeanEnum.LOGIN_ERROR);
         }
+
+        //生成cookie
+        String ticket = UUIDUtil.uuid();
+        request.getSession().setAttribute(ticket,user);
+        CookieUtil.setCookie(request,response,"userTicket",ticket);
 
         return RespBean.success();
     }

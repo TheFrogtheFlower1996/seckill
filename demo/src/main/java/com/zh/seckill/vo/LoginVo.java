@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * @author zh
  * @date 2022/4/12 14:17
- * @description:说明 登录参数
+ * @description:说明 登录参数VO
  */
 @Data
 public class LoginVo {

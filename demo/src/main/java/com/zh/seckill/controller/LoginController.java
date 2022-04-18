@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -25,8 +27,6 @@ public class LoginController {
     @Autowired
     private IUserService iUserService;
 
-
-
     /**
      * 请求转发到登录页面
      * */
@@ -40,10 +40,10 @@ public class LoginController {
      * 登录功能
      * */
     @RequestMapping("/doLogin")
-    public @ResponseBody RespBean doLogin(@Valid LoginVo loginVo){
+    public @ResponseBody RespBean doLogin(@Valid LoginVo loginVo, HttpServletRequest request, HttpServletResponse response){
 
         log.info("{}",loginVo);
-        return iUserService.doLogin(loginVo);
+            return iUserService.doLogin(loginVo,request,response);
     }
 
 }
