@@ -1,7 +1,9 @@
 package com.zh.seckill.controller;
 
 import com.zh.seckill.pojo.User;
+import com.zh.seckill.service.IGoodsService;
 import com.zh.seckill.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
@@ -26,6 +28,9 @@ public class GoodsController {
     @Resource
     private IUserService iUserService;
 
+    @Autowired
+    private IGoodsService iGoodsService;
+
     /**
      * 跳转到商品列表页
      * */
@@ -46,6 +51,7 @@ public class GoodsController {
         }*/
 
         model.addAttribute("user",user);
+        model.addAttribute("goodsList",iGoodsService.getGoodsVoLists());
 
         return "goodsList";
     }
