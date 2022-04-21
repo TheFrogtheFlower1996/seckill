@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(Exception.class) //申明捕获那种异常类
     public RespBean ExceptionHandler(Exception e){
 
         System.out.println("异常信息：" + e);
+
         if (e instanceof GlobalException){
             GlobalException ge = (GlobalException) e;
             return RespBean.error(ge.getRespBeanEnum());

@@ -1,5 +1,6 @@
 package com.zh.seckill.service.impl;
 
+import com.zh.seckill.config.RedisConfig;
 import com.zh.seckill.exception.GlobalException;
 import com.zh.seckill.exception.GlobalExceptionHandler;
 import com.zh.seckill.pojo.User;
@@ -14,7 +15,9 @@ import com.zh.seckill.vo.LoginVo;
 import com.zh.seckill.vo.RespBean;
 import com.zh.seckill.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -37,6 +40,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     /**
      * 登录
@@ -71,9 +77,28 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
         //生成cookie
         String ticket = UUIDUtil.uuid();
-        request.getSession().setAttribute(ticket,user);
+        //request.getSession().setAttribute(ticket,user);
+
+        //将用户信息存入redis中
+        redisTemplate.opsForValue().set("user:"+ticket,user);
         CookieUtil.setCookie(request,response,"userTicket",ticket);
 
         return RespBean.success();
+    }
+
+    /**
+     * 根据cookie获取用户
+     * */
+    @Override
+    public User getUserByCookie(String userTicket,HttpServletRequest request,HttpServletResponse response) {
+        if (ObjectUtils.isEmpty(userTicket)) {
+            return null;
+        }
+
+        User user = (User) redisTemplate.opsForValue().get("user:" + userTicket);// .cast 强转快捷键
+        if (user != null){
+            CookieUtil.setCookie(request,response,"userTicket",userTicket);
+        }
+        return user;
     }
 }
