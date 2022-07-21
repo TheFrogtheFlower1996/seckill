@@ -6,6 +6,7 @@ import com.zh.seckill.vo.RespBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +29,9 @@ public class LoginController {
     private IUserService iUserService;
 
     /**
-     * 请求转发到登录页面
+     * 请求转发到登录页面 forward
      * */
-    @RequestMapping("/forwardLogin")
+    @RequestMapping("/toLogin")
     public String forwardLogin(){
 
         return "login";
@@ -40,10 +41,13 @@ public class LoginController {
      * 登录功能
      * */
     @RequestMapping("/doLogin")
-    public @ResponseBody RespBean doLogin(@Valid LoginVo loginVo, HttpServletRequest request, HttpServletResponse response){
+    public @ResponseBody RespBean doLogin(@Valid LoginVo loginVo, HttpServletRequest request, HttpServletResponse response, BindingResult bindingResult){
 
+        if (bindingResult.hasErrors()){
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+        }
         log.info("{}",loginVo);
-            return iUserService.doLogin(loginVo,request,response);
+        return iUserService.doLogin(loginVo,request,response);
     }
 
 }

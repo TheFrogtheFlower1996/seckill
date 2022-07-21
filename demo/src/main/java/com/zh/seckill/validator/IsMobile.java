@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 /**
  * @author zh
  * @date 2022/4/12 16:09
- * @description:说明 验证手机号注解
+ * @description:说明 自定义注解 验证手机号
  */
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
@@ -27,7 +27,5 @@ public @interface IsMobile {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
-
 
 }

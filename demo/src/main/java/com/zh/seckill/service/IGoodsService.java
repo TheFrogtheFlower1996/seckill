@@ -20,4 +20,6 @@ public interface IGoodsService extends IService<Goods> {
      * 获取商品列表
      * */
     List<GoodsVo> getGoodsVoLists();
+
+    GoodsVo findGoodsVoByGoodsId(long goodsId);
 }

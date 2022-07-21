@@ -1,6 +1,6 @@
 package com.zh.seckill.utils;
 
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,10 +15,14 @@ public class ValidatorUtil {
     //正则表达式校验格式
     private final static Pattern mobile_pattern = Pattern.compile("[1]([3-9])[0-9]{9}$");
 
-    //校验方法
+    /**
+     * 校验方法
+     *  参数不为空
+     *  校验格式
+     * */
     public static boolean isMobile(String mobile){
 
-        if (StringUtils.isEmpty(mobile)){
+        if (ObjectUtils.isEmpty(mobile)){
             return false;
         }
         Matcher matcher = mobile_pattern.matcher(mobile);

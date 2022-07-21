@@ -11,16 +11,16 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * @author zh
  * @date 2022/4/21 10:05
- * @description:说明 Redis配置类
+ * @description:说明 Redis配置类 配置redis规则
+ *
  */
 @Configuration
 public class RedisConfig {
 
     @Bean
     public RedisTemplate<String,Object> redisTemplate(RedisConnectionFactory connectionFactory){
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 
-        //配置redis规则
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 
         //key value 序列化
         redisTemplate.setKeySerializer(new StringRedisSerializer()); //String类型

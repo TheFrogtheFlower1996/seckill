@@ -5,17 +5,17 @@ import lombok.*;
 /**
  * @author zh
  * @date 2022/4/12 13:40
- * @description:说明 公共返回对象
+ * @description:说明 统一返回对象
  */
-@Data
+@Data //省略get set方法
 @NoArgsConstructor
 @AllArgsConstructor
 public class RespBean {
 
 
-    private long code;
-    private String message;
-    private Object obj;
+    private long code;//状态码
+    private String message;//消息
+    private Object obj;//对象
 
     /**
      * 成功返回结果
@@ -45,6 +45,7 @@ public class RespBean {
         return new RespBean(beanenum.getCode(),beanenum.getMessage(),obj);
     }
 
+    //TODO 扩展
 
 
 }

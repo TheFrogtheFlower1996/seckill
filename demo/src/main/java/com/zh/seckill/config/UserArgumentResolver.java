@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author zh
  * @date 2022/4/21 10:58
- * @description:说明 自定义用户参数 user
+ * @description:说明 拦截器 自定义用户参数 user
  */
 @Component
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
@@ -28,7 +28,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     private IUserService iUserService;
 
     /**
-     * 判断为true 走 resolveArgument
+     * 判断为 true 走 resolveArgument
      * */
     @Override
     public boolean supportsParameter(MethodParameter parameter) {

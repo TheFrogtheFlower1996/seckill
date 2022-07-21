@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zh.seckill.mapper.SqQypyJcyjQuarterEnterpriseWarningMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zh.seckill.pojo.SqQypyJcyjQuarterEnterpriseWarning">
+        <id column="id" property="id" />
+        <result column="enterprise_code" property="enterpriseCode" />
+        <result column="cert_num" property="certNum" />
+        <result column="enterprise_name" property="enterpriseName" />
+        <result column="is_revenue_warning" property="isRevenueWarning" />
+        <result column="is_profit_warning" property="isProfitWarning" />
+        <result column="is_personal_warning" property="isPersonalWarning" />
+        <result column="is_management_warning" property="isManagementWarning" />
+        <result column="is_gxjscpsr_warning" property="isGxjscpsrWarning" />
+        <result column="is_energy_count" property="isEnergyCount" />
+        <result column="is_tax_deduction" property="isTaxDeduction" />
+        <result column="is_jjkc_count" property="isJjkcCount" />
+        <result column="is_management_standards" property="isManagementStandards" />
+        <result column="is_personal_standards" property="isPersonalStandards" />
+        <result column="is_revenue_up" property="isRevenueUp" />
+        <result column="is_profit" property="isProfit" />
+        <result column="is_energy_outbalance" property="isEnergyOutbalance" />
+        <result column="is_energy_outbalance_double_down" property="isEnergyOutbalanceDoubleDown" />
+        <result column="is_energy_outbalance_double_up" property="isEnergyOutbalanceDoubleUp" />
+        <result column="remark" property="remark" />
+        <result column="status" property="status" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="county" property="county" />
+        <result column="street" property="street" />
+        <result column="year" property="year" />
+        <result column="quarter" property="quarter" />
+        <result column="type" property="type" />
+        <result column="enterprise_domicile" property="enterpriseDomicile" />
+        <result column="contact_person" property="contactPerson" />
+        <result column="contact_information" property="contactInformation" />
+        <result column="present_qualification" property="presentQualification" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, enterprise_code, cert_num, enterprise_name, is_revenue_warning, is_profit_warning, is_personal_warning, is_management_warning, is_gxjscpsr_warning, is_energy_count, is_tax_deduction, is_jjkc_count, is_management_standards, is_personal_standards, is_revenue_up, is_profit, is_energy_outbalance, is_energy_outbalance_double_down, is_energy_outbalance_double_up, remark, status, is_delete, create_time, update_time, province, city, county, street, year, quarter, type, enterprise_domicile, contact_person, contact_information, present_qualification
+    </sql>
+
+</mapper>

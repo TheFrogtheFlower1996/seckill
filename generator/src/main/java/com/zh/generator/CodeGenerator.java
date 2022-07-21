@@ -63,6 +63,8 @@ public class CodeGenerator {
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://127.0.0.1:3306/seckill?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai");
+//        dsc.setUrl("jdbc:mysql://172.16.137.20:3306/kjt_qyyffw?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai");
+//        dsc.setUrl("jdbc:mysql://172.16.137.20:3306/kjt_qyyffw?useSSL=false&serverTimezone=GMT%2B8&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
@@ -157,5 +159,4 @@ public class CodeGenerator {
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
     }
-
 }

@@ -37,4 +37,25 @@
         left join t_seckill_goods as sg on g.id = sg.goods_id
     </select>
 
+    <!-- 获取商品详情 -->
+    <select id="findGoodsVoByGoodsId" resultType="com.zh.seckill.vo.GoodsVo">
+        select
+            g.id,
+            g.goods_name,
+            g.goods_price,
+            g.goods_stock,
+            g.goods_detail,
+            g.goods_title,
+            sg.seckill_price,
+            sg.stock_count,
+            sg.start_date,
+            sg.end_date
+
+        from goods as g
+
+                 left join t_seckill_goods as sg on g.id = sg.goods_id
+        where g.id=#{goodsId}
+    </select>
+
+
 </mapper>

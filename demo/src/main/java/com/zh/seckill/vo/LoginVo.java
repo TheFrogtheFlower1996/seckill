@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author zh
@@ -18,7 +19,8 @@ public class LoginVo {
     @IsMobile
     private String mobile;
     @NotNull
-    @Length(min = 32)
+//    @Length(min = 32)
+    @Size(min = 32)
     private String password;
 
 }

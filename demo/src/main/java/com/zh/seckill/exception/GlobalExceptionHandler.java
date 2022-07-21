@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @author zh
  * @date 2022/4/13 14:57
  * @description:说明 全局异常处理类
+ * 定义 @ExceptionHandler 注解，声明拦截哪种异常
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -18,8 +19,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class) //申明捕获那种异常类
     public RespBean ExceptionHandler(Exception e){
 
-        System.out.println("异常信息：" + e);
+        System.out.println("统一返回异常信息：" + e);
 
+        //具体异常分析
         if (e instanceof GlobalException){
             GlobalException ge = (GlobalException) e;
             return RespBean.error(ge.getRespBeanEnum());
